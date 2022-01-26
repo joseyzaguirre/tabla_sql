@@ -16,7 +16,7 @@ insert into post (nombre_usuario, contenido, descripcion) values ('Pamela', 'Jja
 insert into post (nombre_usuario, contenido, descripcion) values ('Pamela', 'wppwppwpwpwpwpw', 'Como cocinar una lasagna');
 insert into post (nombre_usuario, contenido, descripcion) values ('Carlos', 'mmmmxmxmxmxmxm', 'reglas del ajedrez');
 
-alter table post add titulo varchar (255);
+alter table post add titulo varchar (255) not null default '<sin titulo>';
 
 update post set titulo='titulo1' where id=1;
 update post set titulo='titulo2' where id=2;
@@ -28,4 +28,15 @@ insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Pedro
 delete from post where id=3;
 
 insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Carlos', 'khjkjhkhdkjshkn', 'reglas del boxeo', 'titulo6');
+
+create table comentarios (
+    id serial,
+    fecha date,
+    hora_creacion timestamp default now(),
+    contenido text(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (contenido) REFERENCES post (id)
+);
+
+
 
