@@ -31,12 +31,27 @@ insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Carlo
 
 create table comentarios (
     id serial,
-    fecha date,
+    post_id int not null,
+    fecha date default now(),
     hora_creacion timestamp default now(),
-    contenido text(255),
+    contenido text,
     PRIMARY KEY (id),
-    FOREIGN KEY (contenido) REFERENCES post (id)
+    FOREIGN KEY (post_id) REFERENCES post (id)
 );
+
+insert into comentarios (post_id, contenido) values (1, 'jajajaja gran post');
+insert into comentarios (post_id, contenido) values (1, 'jajajaja muy bueno');
+insert into comentarios (post_id, contenido) values (6, 'salu2 carlos');
+insert into comentarios (post_id, contenido) values (6, 'wena carlos');
+insert into comentarios (post_id, contenido) values (6, 'jajajajaj carlos');
+insert into comentarios (post_id, contenido) values (6, 'joasjoasojiasji carlos');
+
+insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Margarita', 'oisdjoiasdjoi', 'holaaaa', 'titulo7');
+
+insert into comentarios (post_id, contenido) values (1, 'hola margaritaaaaa');
+
+
+
 
 
 
